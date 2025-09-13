@@ -110,8 +110,8 @@
     display:inline-flex; 
     align-items:center; 
     justify-content:center;
-    padding: 10px 16px; 
-    border-radius: 20px;
+    padding: 14px 16px; 
+    border-radius: 12px;
     border-style: none;
     font-weight:600; 
     text-decoration:none; 
@@ -172,8 +172,9 @@
       gap: 8px;
       padding: 12px;
     }
-    .searchbar input,
-    .searchbar .btn { width: 100%; }
+    .searchbar input { 
+        width: 100%; 
+    }
   }
   
   
@@ -362,6 +363,13 @@
       inset: 12px auto auto -10px;
       width: 34px; height: 34px; border-radius: 10px;
     }
+    .hero-inner {
+        width: 90vw;
+    }
+    .searchbar {
+        width: 100%;
+    }
+
   }
   
   
