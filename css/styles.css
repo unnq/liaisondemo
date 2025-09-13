@@ -398,3 +398,124 @@
     .foot-copy{ text-align: center; }
   }
   
+
+  /* =========================
+   Mobile navbar + menu
+   ========================= */
+
+/* Keep header above content & scrim logic simple */
+.site-header { z-index: 100; }
+
+/* Toggle button (hidden on desktop) */
+.menu-toggle{
+  display: none;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.menu-toggle:focus-visible{ outline: 2px solid var(--hairline); }
+
+/* Hamburger icon (3 lines) */
+.menu-toggle .lines{
+  position: relative;
+  display: inline-block;
+  width: 24px; height: 2px;
+  background: var(--brand);
+  transition: background .2s ease;
+}
+.menu-toggle .lines::before,
+.menu-toggle .lines::after{
+  content:"";
+  position: absolute; left: 0; right: 0;
+  height: 2px; background: var(--brand);
+  transition: transform .2s ease, top .2s ease, opacity .2s ease;
+}
+.menu-toggle .lines::before{ top: -7px; }
+.menu-toggle .lines::after { top: 7px; }
+
+/* X state */
+.menu-toggle[aria-expanded="true"] .lines{
+  background: transparent;
+}
+.menu-toggle[aria-expanded="true"] .lines::before{
+  top: 0; transform: rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] .lines::after{
+  top: 0; transform: rotate(-45deg);
+}
+
+/* Mobile panel (anchored under sticky nav) */
+.mobile-menu{
+  position: absolute;  /* positions relative to the sticky header/nav */
+  top: 100%;
+  left: 0; right: 0;
+  background: var(--surface);
+  padding: 8px;
+  display: grid;
+  gap: 6px;
+
+  /* animation baseline */
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .25s cubic-bezier(.22,1,.36,1), opacity .2s ease;
+  z-index: 101; /* above header */
+}
+
+/* Open state toggled by JS */
+.mobile-menu[data-open="true"]{
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile links */
+.mobile-link{
+  display: block;
+  padding: 12px 14px;
+  color: var(--text);
+  text-decoration: none;
+  font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.mobile-link:hover{
+  background: #f6f6f8;
+}
+.mobile-link.mobile-cta{
+  border: 2px solid var(--brand);
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Scrim behind the panel (click to close) */
+.menu-scrim{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 90;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.menu-scrim[data-open="true"]{ opacity: 1; }
+
+/* Prevent background scroll when menu is open */
+body.no-scroll{ overflow: hidden; }
+
+/* Responsive rules */
+@media (max-width: 960px){
+  .nav-right{ display: none; }            /* hide desktop links */
+  .menu-toggle{ display: inline-flex; }   /* show hamburger */
+  .nav-inner{ padding: 12px 2vw; }        /* tighten padding on small screens */
+}
+
+@media (min-width: 961px){
+  .mobile-menu{ display: none !important; }
+  .menu-scrim{ display: none !important; }
+  .menu-toggle{ display: none !important; }
+}
