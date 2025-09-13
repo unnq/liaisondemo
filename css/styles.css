@@ -8,9 +8,12 @@
     --muted: #5e5f67;
   
     /* Warm gradient stops */
-    --g1: #ffcf8f; /* peach */
+    --g4: #ffcf8f; /* peach */
     --g2: #ff9f9b; /* coral */
     --g3: #e9b2ff; /* lilac */
+
+    --g0: #c5d0de;
+    --g1: #c5ded4;
   
     --brand: #111113;             /* brand wordmark color (light mode surface) */
     --primary: #1f2937;           /* button bg (dark slate) */
