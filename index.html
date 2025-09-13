@@ -22,6 +22,13 @@
     <nav class="nav">
       <div class="nav-inner">
         <a class="brand" href="/">Alter Ego • Liaison</a>
+  
+        <!-- Mobile toggle (shown on <=960px) -->
+        <button class="menu-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+          <span class="lines" aria-hidden="true"></span>
+        </button>
+  
+        <!-- Desktop links -->
         <div class="nav-right">
           <a class="nav-link" href="#how-it-works">How it works</a>
           <a class="nav-link" href="#footer">Contact</a>
@@ -29,7 +36,18 @@
           <a class="btn btn-primary" href="#">Join beta</a>
         </div>
       </div>
+  
+      <!-- Mobile menu (slides down under the sticky nav) -->
+      <div id="mobile-menu" class="mobile-menu" hidden>
+        <a class="mobile-link" href="#how-it-works">HOW IT WORKS</a>
+        <a class="mobile-link" href="#footer">CONTACT</a>
+        <a class="mobile-link" href="#">SIGN IN</a>
+        <a class="mobile-link mobile-cta" href="#">JOIN BETA</a>
+      </div>
     </nav>
+  
+    <!-- Click-to-close backdrop -->
+    <div class="menu-scrim" hidden></div>
   </header>
 
 
@@ -123,5 +141,7 @@
       document.getElementById('year').textContent = new Date().getFullYear();
     </script>
   </footer>
+
+  <script src="js/mobilemenu.js" defer></script>
 </body>
 </html>
